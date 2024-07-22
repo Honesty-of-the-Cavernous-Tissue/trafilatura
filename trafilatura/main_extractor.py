@@ -426,6 +426,8 @@ def handle_image(element):
 
     for attr in ("data-src", "src"):
         src = element.get(attr)
+        if src is not None and len(src) > 2048:
+            continue
         if is_image_file(src):
             processed_element.set("src", src)
             break
